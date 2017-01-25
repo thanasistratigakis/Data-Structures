@@ -19,7 +19,6 @@ def decode(str_num, base):
     for index, value in enumerate(list_num):
         if not value.isdigit():
             list_num[index] = number_line.index(value)
-            print(value)
         decoded_num += (base ** (len(list_num) - index - 1)) * int(list_num[index])
 
     return decoded_num
