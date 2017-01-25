@@ -12,12 +12,14 @@ def decode(str_num, base):
     assert 2 <= base <= 36
 
     # Decode number
-    decoded_num = 0
 
+    decoded_num = 0
+    # Convert numerical values to base10 values
     list_num = list(str_num)
     for index, value in enumerate(list_num):
         list_num[index] = number_line.index(value)
 
+    # Calculate and Add the value for every digit
     for index, value in enumerate(list_num):
         decoded_num += (base ** (len(list_num) - index - 1)) * int(value)
 
@@ -33,11 +35,12 @@ def encode(num, base):
     assert 2 <= base <= 36
 
     # Encode number
-    encoded_num = []
-    str_num = str(num)
 
+    encoded_num = []
     while num:
+        # If divisible by base, use 0, else use the remainder
         encoded_num.insert(0, number_line[num % base])
+        # Divide number by base
         num /= base
     decodedstring = "".join(encoded_num)
     return decodedstring
@@ -51,7 +54,9 @@ def convert(str_num, base1, base2):
     assert 2 <= base2 <= 36
 
     # Convert number
+    # decode to base 10
     convert_num = decode(str_num, base1)
+    # encode to desired base
     convert_num = encode(convert_num, base2)
     return convert_num
 
