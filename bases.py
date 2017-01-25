@@ -1,7 +1,7 @@
 #!python
 
 import string
-
+number_line = string.digits + string.letters
 
 def decode(str_num, base):
     """
@@ -10,7 +10,19 @@ def decode(str_num, base):
     base -- base of given number
     """
     assert 2 <= base <= 36
-    # TODO: Decode number
+
+    # Decode number
+    decoded_num = 0
+
+    list_num = list(str_num)
+    for index, value in enumerate(list_num):
+        list_num[index] = number_line.index(value)
+
+    for index, value in enumerate(list_num):
+        decoded_num += (base ** (len(list_num) - index - 1)) * int(value)
+
+    return decoded_num
+
 
 def encode(num, base):
     """
@@ -19,7 +31,17 @@ def encode(num, base):
     base -- base to convert to
     """
     assert 2 <= base <= 36
-    # TODO: Encode number
+
+    # Encode number
+    encoded_num = []
+    str_num = str(num)
+
+    while num:
+        encoded_num.insert(0, number_line[num % base])
+        num /= base
+    decodedstring = "".join(encoded_num)
+    return decodedstring
+
 
 def convert(str_num, base1, base2):
     """
@@ -27,8 +49,11 @@ def convert(str_num, base1, base2):
     """
     assert 2 <= base1 <= 36
     assert 2 <= base2 <= 36
-    # TODO: Convert number
 
+    # Convert number
+    convert_num = decode(str_num, base1)
+    convert_num = encode(convert_num, base2)
+    return convert_num
 
 def main():
     import sys
