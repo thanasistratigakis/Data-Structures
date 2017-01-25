@@ -17,11 +17,10 @@ def decode(str_num, base):
     # Convert numerical values to base10 values
     list_num = list(str_num)
     for index, value in enumerate(list_num):
-        list_num[index] = number_line.index(value)
-
-    # Calculate and Add the value for every digit
-    for index, value in enumerate(list_num):
-        decoded_num += (base ** (len(list_num) - index - 1)) * int(value)
+        if not value.isdigit():
+            list_num[index] = number_line.index(value)
+            print(value)
+        decoded_num += (base ** (len(list_num) - index - 1)) * int(list_num[index])
 
     return decoded_num
 
