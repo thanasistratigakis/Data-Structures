@@ -22,12 +22,10 @@ def is_palindrome_iterative(text):
     return True
 
     pass
-    # once implemented, change is_palindrome to call is_palindrome_iterative
-    # to verify that your iterative implementation passes all tests
 
 
 def is_palindrome_recursive(text, left=None, right=None):
-    # TODO: implement the is_palindrome function recursively here
+    # is_palindrome function recursively
 
     if left is None or right is None:
         return is_palindrome_recursive(text, 0, len(text) - 1)
@@ -40,10 +38,7 @@ def is_palindrome_recursive(text, left=None, right=None):
     else:
         return False
 
-
     pass
-    # once implemented, change is_palindrome to call is_palindrome_recursive
-    # to verify that your iterative implementation passes all tests
 
 
 def main():
