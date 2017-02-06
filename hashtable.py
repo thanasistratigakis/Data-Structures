@@ -5,7 +5,7 @@ from linkedlist import LinkedList
 
 class HashTable(object):
 
-    bucket_amount = 8
+    bucket_amount = 7
 
     def __init__(self, init_size=8):
         """Initialize this hash table with the given initial size"""
@@ -69,13 +69,16 @@ class HashTable(object):
         else:
             bucket.append(new_item)
 
-        if bucket.length > 8:
+        if bucket.length > bucket_amount:
             self.resize()
 
         pass
 
     def resize(self):
-
+        bucket_amount *= 2
+        new_buckets = [LinkedList() for i in range(bucket_amount)]
+        for item in self:
+            new_buckets.set(item)
 
 
     def delete(self, key):
