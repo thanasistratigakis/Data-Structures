@@ -72,6 +72,14 @@ class BinarySearchTree:
         else:
             raise KeyError('Error, key not in tree')
 
+    def traverse(self, node):
+        if node != None:
+            self.traverse(node.hasLeftChild())
+            print(node.value)
+            self.traverse(node.hasRightChild())
+
+
+
 
 class TreeNode:
     def __init__(self,key,value,left=None,right=None,parent=None):
@@ -87,6 +95,12 @@ class TreeNode:
     def hasRightChild(self):
         return self.rightChild
 
+    def isLeaf(self):
+        if not (self.rightChild or self.leftChild):
+            return False
+        else:
+            return True
+
 
 data = [("one", 1), ("two", 2), ("three", 3), ("four", 4), ("five", 5), ("six", 6)]
 
@@ -96,9 +110,9 @@ for item in data:
     my_tree.set(item[0], item[1])
 
 print my_tree
-
 print(my_tree.search("five"))
 
+my_tree.traverse(my_tree.root)
 
 
 
