@@ -71,7 +71,7 @@ class BinarySearchTree:
             self.size = self.size - 1
         else:
             raise KeyError('Error, key not in tree')
-
+            
     def traverse(self, node):
         if node != None:
             self.traverse(node.hasLeftChild())
@@ -102,7 +102,7 @@ class TreeNode:
             return True
 
 
-data = [("one", 1), ("two", 2), ("three", 3), ("four", 4), ("five", 5), ("six", 6)]
+data = [(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6)]
 
 my_tree = BinarySearchTree()
 
