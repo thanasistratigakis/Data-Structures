@@ -29,6 +29,17 @@ class Trie(object):
             current_node = node
         return current_node.data
 
+    def prefixSearch(self, key):
+        current_node = self.root
+        for i in range(0, len(key)):
+            char = key[i]
+            node = current_node.children.get(char)
+            if node is None:
+                return None
+            current_node = node
+            if current_node.data is not None:
+                return current_node.data
+        return current_node.data
 
 
 myTrie = Trie()
@@ -38,3 +49,6 @@ myTrie.insert("six", 6)
 
 print(myTrie.search("six"))
 print(myTrie.search("seven"))
+
+print(myTrie.prefixSearch("sieen"))
+print(myTrie.prefixSearch("seventeen"))
