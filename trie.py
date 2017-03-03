@@ -10,13 +10,17 @@ class Trie(object):
 
     def insert(self, key, value):
         current_node = self.root
-        for i in range(0, len(key)):
-            char = key[i]
-            node = current_node.children.get(char)
-            if node is None:
-                node = TrieNode()
-                current_node.children[char] = node
-            current_node = node
+        # for i in range(0, len(key)):
+        #     char = key[i]
+        #     node = current_node.children.get(char)
+        #     if node is None:
+        #         node = TrieNode()
+        #         current_node.children[char] = node
+        #     current_node = node
+        for char in key:
+            if char not in current_node.children:
+                current_node.children[char] = TrieNode()
+            current_node = current_node.children[char]
         current_node.data = value
 
     def search(self, key):
@@ -39,7 +43,7 @@ class Trie(object):
             current_node = node
             if current_node.data is not None:
                 return current_node.data
-        return current_node.data
+        return None
 
 
 myTrie = Trie()
